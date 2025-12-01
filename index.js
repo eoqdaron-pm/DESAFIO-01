@@ -1,13 +1,10 @@
-// Importamos o módulo 'readline' para ler dados do terminal
 const readline = require('readline');
-
-// Criamos a interface de entrada e saída
 const leitor = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
 
-// Função para calcular o nível (Lógica isolada)
+
 function calcularNivel(xp) {
     if (xp < 1000) return "Ferro";
     else if (xp >= 1001 && xp <= 2000) return "Bronze";
@@ -18,26 +15,22 @@ function calcularNivel(xp) {
     else if (xp >= 9001 && xp <= 10000) return "Imortal";
     else return "Radiante";
 }
-
-// === Início da Interação ===
-
-// 1. Pergunta o Nome
 leitor.question("👋 Olá! Qual é o nome do seu Herói? ", (nomeDigitado) => {
     
-    // 2. Pergunta o XP (dentro da resposta do nome para seguir a ordem)
+    
     leitor.question(`Muito prazer, ${nomeDigitado}! Agora, digite a quantidade de XP: `, (xpDigitado) => {
         
-        // Convertemos o texto digitado para número
-        let xp = parseInt(xpDigitado);
         
-        // Validamos se o usuário digitou um número válido
+       let xp = parseInt(xpDigitado);
+        
+        
         if (isNaN(xp)) {
             console.log("❌ Ops! Você precisa digitar um número para o XP.");
         } else {
-            // Chamamos a função para descobrir o nível
+            
             let nivel = calcularNivel(xp);
 
-            // 3. Exibimos a Saudação e o Resultado Final
+            
             console.log("\n------------------------------------------------");
             console.log(`⚔️  Saudações, nobre ${nomeDigitado}!`);
             console.log(`   Com ${xp} pontos de experiência,`);
@@ -45,7 +38,7 @@ leitor.question("👋 Olá! Qual é o nome do seu Herói? ", (nomeDigitado) => {
             console.log("------------------------------------------------\n");
         }
 
-        // Encerramos o leitor para o programa finalizar
+        
         leitor.close();
     });
 });
